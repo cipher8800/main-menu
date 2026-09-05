@@ -1,0 +1,387 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Main Menu</title>
+    <link rel="icon" type="image/png" href="favicon.png" />
+    <link href="vendor/bootstrap-icons-1.13.1/bootstrap-icons.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="css/main.css" />
+    <script src="js/constants.js" defer></script>
+    <script src="js/utils.js" defer></script>
+    <script src="js/main.js" defer></script>
+  </head>
+  <body class="dark-theme">
+    <div class="app container">
+      <header class="navbar">
+        <div class="logo">
+          <img src="assets/images/icons/crossed-swords.png" />
+          AETHERIA
+        </div>
+
+        <div class="profile-display">
+          <div class="avatar">
+            <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=200&q=80" />
+            <div class="level-badge">42</div>
+          </div>
+          <div class="info">
+            <span class="name">Archmage_Valen</span>
+            <div class="xp-bar">
+              <div class="fill"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="currency-display">
+          <div class="item">
+            <img src="assets/images/icons/crown-coin.png" />
+            <span>14,250</span>
+            <button>
+              <i class="bi bi-plus-lg"></i>
+            </button>
+          </div>
+          <div class="item">
+            <img src="assets/images/icons/diamond.png" />
+            <span>1,850</span>
+            <button>
+              <i class="bi bi-plus-lg"></i>
+            </button>
+          </div>
+          <div class="item">
+            <img src="assets/images/icons/purple-crystal.png" />
+            <span>3,400</span>
+          </div>
+        </div>
+
+        <div class="actions">
+          <button>
+            <img src="assets/images/icons/scroll.png" />
+            <span class="badge-dot"></span>
+          </button>
+          <button>
+            <img src="assets/images/icons/settings-gear.png" />
+          </button>
+        </div>
+      </header>
+
+      <main class="main-content">
+        <!-- Menu Navigation Column -->
+        <nav class="navigation-menu">
+          <button class="item">
+            <i class="bi bi-play-fill"></i>
+            <div class="item-text">
+              <span class="title">Play Duel</span>
+              <span class="subtitle">Ranked, Casual, Solo</span>
+            </div>
+          </button>
+
+          <button class="item">
+            <i class="bi bi-box-fill"></i>
+            <div class="item-text">
+              <span class="title">Collection</span>
+              <span class="subtitle">Decks & Card Library</span>
+            </div>
+          </button>
+
+          <button class="item">
+            <i class="bi bi-shop-window"></i>
+            <div class="item-text">
+              <span class="title">Emporium</span>
+              <span class="subtitle">Packs, Skins, Offerings</span>
+            </div>
+          </button>
+
+          <button class="item">
+            <i class="bi bi-trophy-fill"></i>
+            <div class="item-text">
+              <span class="title">Battle Pass</span>
+              <span class="subtitle">Quests & Rewards</span>
+            </div>
+          </button>
+
+          <button class="item">
+            <i class="bi bi-sliders2"></i>
+            <div class="item-text">
+              <span class="title">Settings</span>
+              <span class="subtitle">Audio, Display & Controls</span>
+            </div>
+          </button>
+        </nav>
+
+        <!-- Center Showcase Spotlight -->
+        <section class="showcase">
+          <div class="banner">
+            <div class="subtitle">Season 4: Frostfire Awakening</div>
+            <h1 class="title">AETHERIA</h1>
+          </div>
+
+          <div class="deck-widget">
+            <div class="artwork">
+              <img src="assets/images/icons/card-back.png" />
+            </div>
+            <div class="info">
+              <span class="label">Active Deck</span>
+              <span class="title">Pyromancer Realm</span>
+              <div class="stats">
+                <span><i class="fa-solid fa-layer-group"></i> 30/30</span>
+                <span><i class="fa-solid fa-bolt"></i> Avg Cost: 3.4</span>
+              </div>
+            </div>
+            <i class="fa-solid fa-arrows-rotate" style="color: var(--text-muted); margin-left: 1rem"></i>
+          </div>
+        </section>
+
+        <aside class="sidebar">
+          <!-- News Card -->
+          <div class="news-panel" style="background-image: url(assets/images/banners/0.jpg);">
+            <span class="news-tag">Expansion Update</span>
+            <h3 class="title">Shadows over Astral Realm</h3>
+            <p class="desc">Discover 85 new cards, mythic spells, and dynamic battlefield events!</p>
+          </div>
+
+          <div class="quests-panel">
+            <div class="header">
+              <div class="title">
+                <i class="bi bi-calendar-check"></i>
+                <span>Daily Quests</span>
+              </div>
+              <span class="reset-label">Reset in 14h</span>
+            </div>
+
+            <div class="item">
+              <div class="info">
+                <span class="name">Play 5 Fire Spells</span>
+                <span class="reward"><i class="bi bi-coin"></i> +350</span>
+              </div>
+              <div class="progress-bar">
+                <div class="fill" style="width: 80%"></div>
+              </div>
+            </div>
+
+            <div class="item">
+              <div class="info">
+                <span class="name">Win 3 Ranked Matches</span>
+                <span class="reward"><i class="bi bi-gem"></i> +50</span>
+              </div>
+              <div class="progress-bar">
+                <div class="fill" style="width: 33%"></div>
+              </div>
+            </div>
+          </div>
+        </aside>
+      </main>
+    </div>
+
+    <!-- Sub-screen 1: Play Modes Modal -->
+    <div class="modal-overlay" id="play-modal">
+      <div class="modal-window">
+        <div class="modal-header">
+          <div class="modal-title-group">
+            <i class="fa-solid fa-swords" style="color: var(--primary-gold); font-size: 1.5rem"></i>
+            <h2 class="modal-title">Select Battle Mode</h2>
+          </div>
+          <button class="close-modal-btn" onclick="closeModal('play-modal')"><i class="fa-solid fa-xmark"></i></button>
+        </div>
+        <div class="modal-body">
+          <div class="modes-grid">
+            <div
+              class="mode-card"
+              onclick="
+                playAudio('play');
+                triggerMatchmaking('Ranked Duel');
+              "
+            >
+              <div class="mode-card-bg" style="background-image: url(&quot;https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=600&q=80&quot;)"></div>
+              <div class="mode-card-content">
+                <i class="fa-solid fa-trophy mode-icon"></i>
+                <h3 class="mode-title">Ranked Duel</h3>
+                <p class="mode-desc">Climb the ladder ranks, earn seasonal rewards and competitive prestige.</p>
+              </div>
+            </div>
+
+            <div
+              class="mode-card"
+              onclick="
+                playAudio('play');
+                triggerMatchmaking('Casual Match');
+              "
+            >
+              <div class="mode-card-bg" style="background-image: url(&quot;https://images.unsplash.com/photo-1578632767115-351597cf2477?auto=format&fit=crop&w=600&q=80&quot;)"></div>
+              <div class="mode-card-content">
+                <i class="fa-solid fa-dice mode-icon" style="color: var(--primary-cyan)"></i>
+                <h3 class="mode-title">Casual Match</h3>
+                <p class="mode-desc">Test new deck builds without rank penalties in fast-paced matches.</p>
+              </div>
+            </div>
+
+            <div
+              class="mode-card"
+              onclick="
+                playAudio('play');
+                triggerMatchmaking('Solo Campaign');
+              "
+            >
+              <div class="mode-card-bg" style="background-image: url(&quot;https://images.unsplash.com/photo-1514539079130-25950c84af65?auto=format&fit=crop&w=600&q=80&quot;)"></div>
+              <div class="mode-card-content">
+                <i class="fa-solid fa-book-bookmark mode-icon" style="color: var(--primary-purple)"></i>
+                <h3 class="mode-title">Solo Campaign</h3>
+                <p class="mode-desc">Embark on story-driven adventures and unlock exclusive elemental cards.</p>
+              </div>
+            </div>
+
+            <div
+              class="mode-card"
+              onclick="
+                playAudio('play');
+                triggerMatchmaking('Draft Arena');
+              "
+            >
+              <div class="mode-card-bg" style="background-image: url(&quot;https://images.unsplash.com/photo-1563089145-599997674d42?auto=format&fit=crop&w=600&q=80&quot;)"></div>
+              <div class="mode-card-content">
+                <i class="fa-solid fa-wand-magic-sparkles mode-icon" style="color: var(--accent-green)"></i>
+                <h3 class="mode-title">Draft Arena</h3>
+                <p class="mode-desc">Draft a random deck on the fly and fight for high-tier chest rewards.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Sub-screen 2: Card Collection Modal -->
+    <div class="modal-overlay" id="collection-modal">
+      <div class="modal-window">
+        <div class="modal-header">
+          <div class="modal-title-group">
+            <i class="fa-solid fa-cards-blank" style="color: var(--primary-cyan); font-size: 1.5rem"></i>
+            <h2 class="modal-title">Card Collection</h2>
+          </div>
+          <button class="close-modal-btn" onclick="closeModal('collection-modal')"><i class="fa-solid fa-xmark"></i></button>
+        </div>
+        <div class="modal-body">
+          <div class="collection-grid" id="card-grid">
+            <!-- Cards will be populated dynamically by JavaScript -->
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Sub-screen 3: Shop / Emporium Modal -->
+    <div class="modal-overlay" id="shop-modal">
+      <div class="modal-window">
+        <div class="modal-header">
+          <div class="modal-title-group">
+            <i class="fa-solid fa-store" style="color: var(--primary-gold); font-size: 1.5rem"></i>
+            <h2 class="modal-title">Mythic Emporium</h2>
+          </div>
+          <button class="close-modal-btn" onclick="closeModal('shop-modal')"><i class="fa-solid fa-xmark"></i></button>
+        </div>
+        <div class="modal-body">
+          <div class="modes-grid">
+            <div class="mode-card">
+              <div class="mode-card-bg" style="background-image: url(&quot;https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=600&q=80&quot;)"></div>
+              <div class="mode-card-content">
+                <i class="fa-solid fa-box-open mode-icon"></i>
+                <h3 class="mode-title">Frostfire Booster</h3>
+                <p class="mode-desc">Contains 5 cards with at least 1 guaranteed Rare or Legendary.</p>
+                <button class="menu-btn" style="margin-top: 1rem; padding: 0.6rem 1rem" onclick="playAudio('click')">
+                  <span><i class="fa-solid fa-coins gold"></i> 1000 Gold</span>
+                </button>
+              </div>
+            </div>
+
+            <div class="mode-card">
+              <div class="mode-card-bg" style="background-image: url(&quot;https://images.unsplash.com/photo-1550684848-fac1c5b4e853?auto=format&fit=crop&w=600&q=80&quot;)"></div>
+              <div class="mode-card-content">
+                <i class="fa-solid fa-gem mode-icon" style="color: var(--primary-cyan)"></i>
+                <h3 class="mode-title">Arcane Gem Pouch</h3>
+                <p class="mode-desc">Acquire 500 Arcane Gems for cosmetics and special event passes.</p>
+                <button class="menu-btn" style="margin-top: 1rem; padding: 0.6rem 1rem" onclick="playAudio('click')">
+                  <span>$4.99 USD</span>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Sub-screen 4: Quests & Battle Pass Modal -->
+    <div class="modal-overlay" id="quests-modal">
+      <div class="modal-window">
+        <div class="modal-header">
+          <div class="modal-title-group">
+            <i class="fa-solid fa-trophy" style="color: var(--primary-gold); font-size: 1.5rem"></i>
+            <h2 class="modal-title">Quests & Battle Pass</h2>
+          </div>
+          <button class="close-modal-btn" onclick="closeModal('quests-modal')"><i class="fa-solid fa-xmark"></i></button>
+        </div>
+        <div class="modal-body">
+          <div style="display: flex; flex-direction: column; gap: 1.5rem">
+            <div class="quests-widget" style="background: rgba(255, 255, 255, 0.03)">
+              <h3 style="font-family: var(--font-title); color: var(--primary-gold)">Season Pass Progress (Level 18)</h3>
+              <div class="progress-bg" style="height: 12px">
+                <div class="progress-fill" style="width: 65%"></div>
+              </div>
+            </div>
+            <div class="quests-widget" style="background: rgba(255, 255, 255, 0.03)">
+              <div class="item">
+                <div class="info">
+                  <span class="name" style="font-size: 1.1rem">Deal 100 Damage with Creatures</span>
+                  <span class="reward"><i class="fa-solid fa-coins"></i> +500 Gold</span>
+                </div>
+                <div class="progress-bg" style="height: 8px">
+                  <div class="progress-fill" style="width: 45%"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Sub-screen 5: Settings Modal -->
+    <div class="modal-overlay" id="settings-modal">
+      <div class="modal-window">
+        <div class="modal-header">
+          <div class="modal-title-group">
+            <i class="fa-solid fa-sliders" style="color: var(--primary-cyan); font-size: 1.5rem"></i>
+            <h2 class="modal-title">Game Settings</h2>
+          </div>
+          <button class="close-modal-btn" onclick="closeModal('settings-modal')"><i class="fa-solid fa-xmark"></i></button>
+        </div>
+        <div class="modal-body">
+          <div class="settings-list">
+            <div class="setting-item">
+              <div class="setting-label-group">
+                <span class="setting-title">Master Volume</span>
+                <span class="setting-desc">Adjust global UI and sound effect volume</span>
+              </div>
+              <input type="range" min="0" max="100" value="80" id="volume-slider" />
+            </div>
+
+            <div class="setting-item">
+              <div class="setting-label-group">
+                <span class="setting-title">Particle Density</span>
+                <span class="setting-desc">Toggle background magical particles</span>
+              </div>
+              <div class="toggle-btn active" id="particles-toggle" onclick="toggleSetting(this)">
+                <div class="toggle-handle"></div>
+              </div>
+            </div>
+
+            <div class="setting-item">
+              <div class="setting-label-group">
+                <span class="setting-title">High Quality Shaders</span>
+                <span class="setting-desc">Enable 3D card holographic reflection effects</span>
+              </div>
+              <div class="toggle-btn active" id="shaders-toggle" onclick="toggleSetting(this)">
+                <div class="toggle-handle"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
