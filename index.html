@@ -67,7 +67,7 @@
       <main class="main-content">
         <!-- Menu Navigation Column -->
         <nav class="navigation-menu">
-          <button class="item">
+          <button class="item" onclick="toggleModal('play-modal')">
             <i class="bi bi-play-fill"></i>
             <div class="item-text">
               <span class="title">Play Duel</span>
@@ -75,7 +75,7 @@
             </div>
           </button>
 
-          <button class="item">
+          <button class="item" onclick="toggleModal('collection-modal')">
             <i class="bi bi-box-fill"></i>
             <div class="item-text">
               <span class="title">Collection</span>
@@ -83,7 +83,7 @@
             </div>
           </button>
 
-          <button class="item">
+          <button class="item" onclick="toggleModal('shop-modal')">
             <i class="bi bi-shop-window"></i>
             <div class="item-text">
               <span class="title">Emporium</span>
@@ -133,7 +133,7 @@
 
         <aside class="sidebar">
           <!-- News Card -->
-          <div class="news-panel" style="background-image: url(assets/images/banners/0.jpg);">
+          <div class="news-panel" style="background-image: url(assets/images/banners/0.jpg)">
             <span class="news-tag">Expansion Update</span>
             <h3 class="title">Shadows over Astral Realm</h3>
             <p class="desc">Discover 85 new cards, mythic spells, and dynamic battlefield events!</p>
@@ -172,135 +172,72 @@
       </main>
     </div>
 
-    <!-- Sub-screen 1: Play Modes Modal -->
-    <div class="modal-overlay" id="play-modal">
-      <div class="modal-window">
+    <!-- Play Modes Modal -->
+    <div class="play-modal modal hidden" onclick="toggleModal('play-modal')">
+      <div class="modal-content" onclick="stopPropagation(event)">
         <div class="modal-header">
-          <div class="modal-title-group">
-            <i class="fa-solid fa-swords" style="color: var(--primary-gold); font-size: 1.5rem"></i>
-            <h2 class="modal-title">Select Battle Mode</h2>
-          </div>
-          <button class="close-modal-btn" onclick="closeModal('play-modal')"><i class="fa-solid fa-xmark"></i></button>
+          <div class="title"><img src="assets/images/icons/iron-sword.png" /> Select Battle Mode</div>
+          <button class="close-btn" onclick="toggleModal('play-modal')"><i class="bi bi-x-lg"></i></button>
         </div>
-        <div class="modal-body">
-          <div class="modes-grid">
-            <div
-              class="mode-card"
-              onclick="
-                playAudio('play');
-                triggerMatchmaking('Ranked Duel');
-              "
-            >
-              <div class="mode-card-bg" style="background-image: url(&quot;https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=600&q=80&quot;)"></div>
-              <div class="mode-card-content">
-                <i class="fa-solid fa-trophy mode-icon"></i>
-                <h3 class="mode-title">Ranked Duel</h3>
-                <p class="mode-desc">Climb the ladder ranks, earn seasonal rewards and competitive prestige.</p>
-              </div>
-            </div>
+        <div class="modal-body mode-list">
+          <div class="item" style="background-image: url(&quot;https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=600&q=80&quot;)">
+            <i class="bi bi-trophy-fill"></i>
+            <h3 class="title">Ranked Duel</h3>
+            <p class="desc">Climb the ladder ranks, earn seasonal rewards and competitive prestige.</p>
+          </div>
 
-            <div
-              class="mode-card"
-              onclick="
-                playAudio('play');
-                triggerMatchmaking('Casual Match');
-              "
-            >
-              <div class="mode-card-bg" style="background-image: url(&quot;https://images.unsplash.com/photo-1578632767115-351597cf2477?auto=format&fit=crop&w=600&q=80&quot;)"></div>
-              <div class="mode-card-content">
-                <i class="fa-solid fa-dice mode-icon" style="color: var(--primary-cyan)"></i>
-                <h3 class="mode-title">Casual Match</h3>
-                <p class="mode-desc">Test new deck builds without rank penalties in fast-paced matches.</p>
-              </div>
-            </div>
+          <div class="item" style="background-image: url(&quot;https://images.unsplash.com/photo-1578632767115-351597cf2477?auto=format&fit=crop&w=600&q=80&quot;)">
+            <i class="bi bi-dice-3-fill"></i>
+            <h3 class="title">Casual Match</h3>
+            <p class="desc">Test new deck builds without rank penalties in fast-paced matches.</p>
+          </div>
 
-            <div
-              class="mode-card"
-              onclick="
-                playAudio('play');
-                triggerMatchmaking('Solo Campaign');
-              "
-            >
-              <div class="mode-card-bg" style="background-image: url(&quot;https://images.unsplash.com/photo-1514539079130-25950c84af65?auto=format&fit=crop&w=600&q=80&quot;)"></div>
-              <div class="mode-card-content">
-                <i class="fa-solid fa-book-bookmark mode-icon" style="color: var(--primary-purple)"></i>
-                <h3 class="mode-title">Solo Campaign</h3>
-                <p class="mode-desc">Embark on story-driven adventures and unlock exclusive elemental cards.</p>
-              </div>
-            </div>
+          <div class="item" style="background-image: url(&quot;https://images.unsplash.com/photo-1514539079130-25950c84af65?auto=format&fit=crop&w=600&q=80&quot;)">
+            <i class="bi bi-bookmark-fill"></i>
+            <h3 class="title">Solo Campaign</h3>
+            <p class="desc">Embark on story-driven adventures and unlock exclusive elemental cards.</p>
+          </div>
 
-            <div
-              class="mode-card"
-              onclick="
-                playAudio('play');
-                triggerMatchmaking('Draft Arena');
-              "
-            >
-              <div class="mode-card-bg" style="background-image: url(&quot;https://images.unsplash.com/photo-1563089145-599997674d42?auto=format&fit=crop&w=600&q=80&quot;)"></div>
-              <div class="mode-card-content">
-                <i class="fa-solid fa-wand-magic-sparkles mode-icon" style="color: var(--accent-green)"></i>
-                <h3 class="mode-title">Draft Arena</h3>
-                <p class="mode-desc">Draft a random deck on the fly and fight for high-tier chest rewards.</p>
-              </div>
-            </div>
+          <div class="item" style="background-image: url(&quot;https://images.unsplash.com/photo-1563089145-599997674d42?auto=format&fit=crop&w=600&q=80&quot;)">
+            <i class="bi bi-magic"></i>
+            <h3 class="title">Draft Arena</h3>
+            <p class="desc">Draft a random deck on the fly and fight for high-tier chest rewards.</p>
           </div>
         </div>
       </div>
     </div>
 
-    <!-- Sub-screen 2: Card Collection Modal -->
-    <div class="modal-overlay" id="collection-modal">
-      <div class="modal-window">
+    <!-- Card Collection Modal -->
+    <div class="collection-modal modal hidden" onclick="toggleModal('collection-modal')">
+      <div class="modal-content" onclick="stopPropagation(event)">
         <div class="modal-header">
-          <div class="modal-title-group">
-            <i class="fa-solid fa-cards-blank" style="color: var(--primary-cyan); font-size: 1.5rem"></i>
-            <h2 class="modal-title">Card Collection</h2>
-          </div>
-          <button class="close-modal-btn" onclick="closeModal('collection-modal')"><i class="fa-solid fa-xmark"></i></button>
+          <div class="title"><img src="assets/images/icons/backpack.png" /> Card Collection</div>
+          <button class="close-btn" onclick="toggleModal('collection-modal')"><i class="bi bi-x-lg"></i></button>
         </div>
-        <div class="modal-body">
-          <div class="collection-grid" id="card-grid">
-            <!-- Cards will be populated dynamically by JavaScript -->
-          </div>
-        </div>
+        <div class="modal-body items-grid"></div>
       </div>
     </div>
 
-    <!-- Sub-screen 3: Shop / Emporium Modal -->
-    <div class="modal-overlay" id="shop-modal">
-      <div class="modal-window">
+    <!-- Shop Modal -->
+    <div class="shop-modal modal hidden" onclick="toggleModal('shop-modal')">
+      <div class="modal-content" onclick="stopPropagation(event)">
         <div class="modal-header">
-          <div class="modal-title-group">
-            <i class="fa-solid fa-store" style="color: var(--primary-gold); font-size: 1.5rem"></i>
-            <h2 class="modal-title">Mythic Emporium</h2>
-          </div>
-          <button class="close-modal-btn" onclick="closeModal('shop-modal')"><i class="fa-solid fa-xmark"></i></button>
+          <div class="title"><img src="assets/images/icons/treasure-chest.png" /> Mythic Emporium</div>
+          <button class="close-btn" onclick="toggleModal('shop-modal')"><i class="bi bi-x-lg"></i></button>
         </div>
-        <div class="modal-body">
-          <div class="modes-grid">
-            <div class="mode-card">
-              <div class="mode-card-bg" style="background-image: url(&quot;https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=600&q=80&quot;)"></div>
-              <div class="mode-card-content">
-                <i class="fa-solid fa-box-open mode-icon"></i>
-                <h3 class="mode-title">Frostfire Booster</h3>
-                <p class="mode-desc">Contains 5 cards with at least 1 guaranteed Rare or Legendary.</p>
-                <button class="menu-btn" style="margin-top: 1rem; padding: 0.6rem 1rem" onclick="playAudio('click')">
-                  <span><i class="fa-solid fa-coins gold"></i> 1000 Gold</span>
-                </button>
-              </div>
-            </div>
+        <div class="modal-body items-grid">
+          <div class="item" style="background-image: url(assets/images/banners/1.jpg)">
+            <img src="assets/images/icons/money-bag.png" class="icon" />
+            <h3 class="title">Frostfire Booster</h3>
+            <p class="desc">Contains 5 cards with at least 1 guaranteed Rare or Legendary.</p>
+            <button class="button"><i class="bi bi-coin"></i> 1000 Gold</button>
+          </div>
 
-            <div class="mode-card">
-              <div class="mode-card-bg" style="background-image: url(&quot;https://images.unsplash.com/photo-1550684848-fac1c5b4e853?auto=format&fit=crop&w=600&q=80&quot;)"></div>
-              <div class="mode-card-content">
-                <i class="fa-solid fa-gem mode-icon" style="color: var(--primary-cyan)"></i>
-                <h3 class="mode-title">Arcane Gem Pouch</h3>
-                <p class="mode-desc">Acquire 500 Arcane Gems for cosmetics and special event passes.</p>
-                <button class="menu-btn" style="margin-top: 1rem; padding: 0.6rem 1rem" onclick="playAudio('click')">
-                  <span>$4.99 USD</span>
-                </button>
-              </div>
-            </div>
+          <div class="item" style="background-image: url(assets/images/banners/2.jpg)">
+            <img src="assets/images/icons/blue-gem.png" class="icon" />
+            <h3 class="title">Arcane Gem Pouch</h3>
+            <p class="desc">Acquire 500 Arcane Gems for cosmetics and special event passes.</p>
+            <button class="button">$4.99 USD</button>
           </div>
         </div>
       </div>

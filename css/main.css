@@ -37,6 +37,10 @@
   line-height: 1;
 }
 
+body.no-scroll {
+  overflow: hidden;
+}
+
 button {
   cursor: pointer;
 }
@@ -320,7 +324,6 @@ body {
   line-height: 1;
   letter-spacing: 3px;
   background: linear-gradient(180deg, #ffffff 0%, #cbd5e1 60%, #64748b 100%);
-  -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.8));
 }
@@ -503,70 +506,51 @@ body {
   border-radius: 3px;
 }
 
-.modal-overlay {
+.modal {
   position: fixed;
   inset: 0;
-  z-index: 100;
-  background: rgba(4, 6, 14, 0.85);
-  backdrop-filter: blur(16px);
   display: flex;
   align-items: center;
   justify-content: center;
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity var(--transition-smooth);
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(16px);
 }
 
-.modal-overlay.active {
-  opacity: 1;
-  pointer-events: auto;
-}
-
-.modal-window {
-  background: linear-gradient(135deg, rgba(20, 27, 48, 0.95) 0%, rgba(10, 14, 28, 0.98) 100%);
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  border-radius: 20px;
-  width: 90%;
-  max-width: 1050px;
-  max-height: 85vh;
+.modal .modal-content {
   display: flex;
   flex-direction: column;
-  box-shadow:
-    0 25px 60px rgba(0, 0, 0, 0.8),
-    0 0 40px rgba(59, 130, 246, 0.15);
-  transform: scale(0.92) translateY(20px);
-  transition: transform var(--transition-smooth);
+  gap: 10px;
+  background: linear-gradient(135deg, rgba(20, 27, 48, 0.95) 0%, rgba(10, 14, 28, 0.98) 100%);
+  border-radius: 20px;
+  width: calc(100% - 20px);
+  max-width: 1024px;
+  max-height: calc(100vh - 150px);
   overflow: hidden;
 }
 
-.modal-overlay.active .modal-window {
-  transform: scale(1) translateY(0);
-}
-
-.modal-header {
+.modal .modal-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1.25rem 2rem;
+  padding: 20px 30px;
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
   background: rgba(0, 0, 0, 0.2);
 }
 
-.modal-title-group {
+.modal .title {
   display: flex;
   align-items: center;
-  gap: 0.75rem;
+  gap: 10px;
+  font-weight: bold;
 }
 
-.modal-title {
-  font-family: var(--font-title);
-  font-size: 1.6rem;
-  font-weight: 700;
-  letter-spacing: 1px;
-  color: #fff;
+.modal .title img {
+  width: 32px;
+  height: 32px;
+  object-fit: contain;
 }
 
-.close-modal-btn {
+.modal .close-btn {
   background: rgba(255, 255, 255, 0.05);
   border: 1px solid rgba(255, 255, 255, 0.1);
   color: var(--text-muted);
@@ -580,138 +564,95 @@ body {
   transition: all var(--transition-fast);
 }
 
-.close-modal-btn:hover {
-  background: var(--accent-red);
-  color: #fff;
-  border-color: var(--accent-red);
-  transform: rotate(90deg);
-}
-
-.modal-body {
-  padding: 2rem;
-  overflow-y: auto;
+.modal .modal-body {
   flex: 1;
+  padding: 10px;
+  overflow-x: hidden;
+  overflow-y: auto;
 }
 
-/* Sub-screen 1: Game Modes Grid */
-.modes-grid {
+.play-modal .mode-list {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 1.5rem;
+  gap: 10px;
 }
 
-.mode-card {
+.play-modal .mode-list .item {
   position: relative;
-  height: 340px;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr 25px 60px;
+  gap: 5px;
+  aspect-ratio: 5/7;
   border-radius: 16px;
-  overflow: hidden;
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  padding: 1.5rem;
+  padding: 10px;
   cursor: pointer;
-  transition: all var(--transition-smooth);
-}
-
-.mode-card-bg {
-  position: absolute;
-  inset: 0;
   background-size: cover;
   background-position: center;
-  transition: transform 0.5s ease;
-  z-index: 0;
 }
 
-.mode-card::after {
+.play-modal .mode-list .item::before {
   content: "";
   position: absolute;
   inset: 0;
-  background: linear-gradient(180deg, transparent 30%, rgba(6, 9, 20, 0.95) 100%);
+  background: linear-gradient(to top,rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0) 100%);
+  border-radius: 16px;
+}
+
+.play-modal .mode-list .item > * {
   z-index: 1;
 }
 
-.mode-card-content {
-  position: relative;
-  z-index: 2;
-}
-
-.mode-icon {
+.play-modal .mode-list .item .bi {
+  align-self: flex-end;
   font-size: 2rem;
-  margin-bottom: 0.5rem;
-  color: var(--primary-gold);
-  filter: drop-shadow(0 0 10px var(--primary-gold-glow));
 }
 
-.mode-title {
-  font-family: var(--font-title);
-  font-size: 1.4rem;
-  font-weight: 700;
-  margin-bottom: 0.4rem;
+.play-modal .mode-list .item .title {
+  font-size: 1.2rem;
+  font-weight: bold;
 }
 
-.mode-desc {
+.play-modal .mode-list .item .desc {
   font-size: 0.85rem;
-  color: var(--text-muted);
-  line-height: 1.4;
+  opacity: 0.8;
 }
 
-.mode-card:hover {
-  transform: translateY(-8px);
-  border-color: var(--primary-gold);
-  box-shadow: 0 15px 30px var(--primary-gold-glow);
-}
-
-.mode-card:hover .mode-card-bg {
-  transform: scale(1.1);
-}
-
-/* Sub-screen 2: Collection Grid & 3D Interactive Card Tilt */
-.collection-grid {
+.collection-modal .items-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-  gap: 1.5rem;
-  perspective: 1000px;
+  grid-template-columns: repeat(auto-fill, minmax(128px, 1fr));
+  gap: 10px;
 }
 
-.tcg-card {
+.collection-modal .items-grid .item {
   position: relative;
-  width: 100%;
-  aspect-ratio: 5 / 7;
-  border-radius: 12px;
-  background: #111827;
-  border: 2px solid #374151;
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
-  cursor: pointer;
-  transform-style: preserve-3d;
-  transition:
-    transform 0.1s ease,
-    border-color 0.3s ease,
-    box-shadow 0.3s ease;
-  overflow: hidden;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  padding: 0.75rem;
+  width: 100%;
+  aspect-ratio: 5 / 7;
+  border-radius: 12px;
+  cursor: pointer;
+  padding: 10px;
 }
 
-.tcg-card-art {
+.collection-modal .items-grid .item .artwork {
   position: absolute;
   inset: 0;
   background-size: cover;
   background-position: center;
-  opacity: 0.85;
-  z-index: 0;
+  border-radius: 12px;
 }
 
-.tcg-card-overlay {
+.collection-modal .items-grid .item .card-overlay {
   position: absolute;
   inset: 0;
   background: linear-gradient(180deg, rgba(0, 0, 0, 0.6) 0%, transparent 40%, rgba(0, 0, 0, 0.9) 100%);
   z-index: 1;
+  border-radius: 12px;
 }
 
-.tcg-card-header {
+.collection-modal .items-grid .item .card-header {
   position: relative;
   z-index: 2;
   display: flex;
@@ -719,7 +660,7 @@ body {
   align-items: center;
 }
 
-.card-cost {
+.collection-modal .items-grid .item .cost {
   width: 28px;
   height: 28px;
   background: var(--primary-cyan);
@@ -732,12 +673,12 @@ body {
   box-shadow: 0 0 10px var(--primary-cyan-glow);
 }
 
-.tcg-card-footer {
+.collection-modal .items-grid .item .card-footer {
   position: relative;
   z-index: 2;
 }
 
-.card-name {
+.collection-modal .items-grid .item .name {
   font-family: var(--font-title);
   font-size: 0.95rem;
   font-weight: 700;
@@ -745,38 +686,53 @@ body {
   text-shadow: 0 2px 4px #000;
 }
 
-.card-type {
-  font-size: 0.7rem;
-  color: var(--primary-gold);
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
+.collection-modal .items-grid .item.legendary {
+  border-color: gold;
 }
 
-.tcg-card.legendary {
-  border-color: var(--primary-gold);
-  box-shadow: 0 0 15px var(--primary-gold-glow);
+.collection-modal .items-grid .item.epic {
+  border-color: purple;
 }
 
-.tcg-card.epic {
-  border-color: var(--primary-purple);
-  box-shadow: 0 0 15px var(--primary-purple-glow);
+/* Shop modal */
+.shop-modal .items-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
 }
 
-/* Card Shimmer / Holographic Effect */
-.tcg-card::before {
+.shop-modal .items-grid .item {
+  flex: 1;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  gap: 10px;
+  min-width: 200px;
+  height: 300px;
+  padding: 10px;
+  background-size: cover;
+  background-position: center;
+  border-radius: 8px;
+  border: 2px solid var(--border-color);
+}
+
+.shop-modal .items-grid .item::before {
   content: "";
   position: absolute;
-  inset: -100%;
-  background: linear-gradient(115deg, transparent 40%, rgba(255, 255, 255, 0.25) 50%, transparent 60%);
-  transform: rotate(30deg);
-  pointer-events: none;
-  z-index: 3;
-  opacity: 0;
-  transition: opacity 0.3s;
+  inset: 0;
+  background: linear-gradient(to top,rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0) 100%);
+  border-radius: 8px;
 }
 
-.tcg-card:hover::before {
-  opacity: 1;
+.shop-modal .items-grid .item > * {
+  z-index: 1;
+}
+
+.shop-modal .items-grid .item .icon {
+  width: 64px;
+  height: 64px;
+  object-fit: contain;
 }
 
 /* Sub-screen 3: Settings Layout */
