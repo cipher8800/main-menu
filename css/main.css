@@ -225,8 +225,9 @@ body {
 .navbar .logo {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 8px;
   font-size: 1.5rem;
+  cursor: pointer;
 }
 
 .navbar .logo img {
@@ -259,16 +260,16 @@ body {
 
 .profile-display .level-badge {
   position: absolute;
-  bottom: -4px;
-  right: -4px;
+  bottom: -3px;
+  right: -3px;
   display: flex;
   align-items: center;
   justify-content: center;
+  width: 15px;
+  height: 15px;
   background: black;
   color: white;
-  font-size: 0.75rem;
-  width: 20px;
-  height: 20px;
+  font-size: 0.5rem;
   border-radius: 50%;
 }
 
@@ -436,13 +437,9 @@ body {
 }
 
 .showcase .banner .title {
-  font-family: var(--font-title);
   font-size: 3.8rem;
-  font-weight: 900;
-  line-height: 1;
+  font-weight: bold;
   letter-spacing: 3px;
-  background: linear-gradient(180deg, #ffffff 0%, #cbd5e1 60%, #64748b 100%);
-  -webkit-text-fill-color: transparent;
   filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.8));
 }
 
@@ -465,7 +462,7 @@ body {
 
 .deck-widget .artwork {
   border-radius: 6px;
-  background: linear-gradient(to top right, #4c1d95, #1e1b4b);
+  background: rgba(0, 0, 0, 0.5);
   border: 2px solid var(--primary-purple);
   display: flex;
   align-items: center;
@@ -789,6 +786,7 @@ body {
   display: flex;
   flex-direction: column;
   gap: 10px;
+  padding: 10px;
 }
 
 .quests-modal .item-list .item .info {

@@ -5,6 +5,22 @@ const IMAGES = {
   cardBack: `${IMAGES_URL}/card-back.png`,
 };
 
+const DECKS_URL = "assets/images/decks"
+const DECKS = {
+  castleDeck: `${DECKS_URL}/castle-deck.jpg`,
+  dragonDeck: `${DECKS_URL}/dragon-deck.jpg`,
+  elfDeck: `${DECKS_URL}/elf-deck.jpg`,
+  fairyDeck: `${DECKS_URL}/fairy-deck.jpg`,
+  forestDeck: `${DECKS_URL}/forest-deck.jpg`,
+  krakenDeck: `${DECKS_URL}/kraken-deck.jpg`,
+  moonCastleDeck: `${DECKS_URL}/moon-castle-deck.jpg`,
+  phoenixDeck: `${DECKS_URL}/phoenix-deck.jpg`,
+  skeletonDeck: `${DECKS_URL}/skeleton-deck.jpg`,
+  volcanoDeck: `${DECKS_URL}/volcano-deck.jpg`,
+  wizardDeck: `${DECKS_URL}/wizard-deck.jpg`,
+  wolfDeck: `${DECKS_URL}/wolf-deck.jpg`,
+};
+
 const SCENERIES_URL = "assets/images/sceneries"
 const SCENERIES = {
   canalCity: `${SCENERIES_URL}/canal-city.jpg`,
@@ -39,7 +55,7 @@ const ICONS = {
   bow: `${ICONS_URL}/wooden-bow.png`,
   wood: `${ICONS_URL}/wood-logs.png`,
   wingedStar: `${ICONS_URL}/winged-star.png`,
-  mana: `${ICONS_URL}/water-drop.png`,
+  mana: `${ICONS_URL}/mana.png`,
   trophy: `${ICONS_URL}/trophy.png`,
   treasureMap: `${ICONS_URL}/treasure-map.png`,
   treasureChest: `${ICONS_URL}/treasure-chest.png`,
