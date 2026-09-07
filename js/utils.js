@@ -33,6 +33,14 @@ function randomInt(min, max) {
   return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
+function getRandomProperty(obj) {
+  const keys = Object.keys(obj);
+  if (keys.length === 0) return undefined;
+  
+  const randomKey = keys[Math.floor(Math.random() * keys.length)];
+  return { key: randomKey, value: obj[randomKey] };
+}
+
 function getFileDataUrl(file) {
   return new Promise((resolve, reject) => {
     const reader = new FileReader();

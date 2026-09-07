@@ -1,76 +1,216 @@
-const PROJECT_NAME = "html-starter"
+const PROJECT_NAME = "main-menu";
 
-const ARTWORKS_URL = "assets/images/artworks"
+const IMAGES_URL = "assets/images";
+const IMAGES = {
+  cardBack: `${IMAGES_URL}/card-back.png`,
+};
 
-const CARDS_DATA = [
+const SCENERIES_URL = "assets/images/sceneries"
+const SCENERIES = {
+  canalCity: `${SCENERIES_URL}/canal-city.jpg`,
+  cherryBlossom: `${SCENERIES_URL}/cherry-blossom.jpg`,
+  cosmicVortex: `${SCENERIES_URL}/cosmic-vortex.jpg`,
+  darkCastle: `${SCENERIES_URL}/dark-castle.jpg`,
+  darkTower: `${SCENERIES_URL}/dark-tower.jpg`,
+  floatingCastle: `${SCENERIES_URL}/floating-castle.jpg`,
+  forestCottages: `${SCENERIES_URL}/forest-cottages.jpg`,
+  forestRuins: `${SCENERIES_URL}/forest-ruins.jpg`,
+  harborCity: `${SCENERIES_URL}/harbor-city.jpg`,
+  iceCastle: `${SCENERIES_URL}/ice-castle.jpg`,
+  islandCastle: `${SCENERIES_URL}/island-castle.jpg`,
+  lavaFortress: `${SCENERIES_URL}/lava-fortress.jpg`,
+  medievalCastle: `${SCENERIES_URL}/medieval-castle.jpg`,
+  moonlitCastle: `${SCENERIES_URL}/moonlit-castle.jpg`,
+  mountainCastle: `${SCENERIES_URL}/mountain-castle.jpg`,
+  mysticalPortal: `${SCENERIES_URL}/mystical-portal.jpg`,
+  pirateShip: `${SCENERIES_URL}/pirate-ship.jpg`,
+  purpleCastle: `${SCENERIES_URL}/purple-castle.jpg`,
+  seaMonster: `${SCENERIES_URL}/sea-monster.jpg`,
+  skeletonWasteland: `${SCENERIES_URL}/skeleton-wasteland.jpg`,
+  skyIslands: `${SCENERIES_URL}/sky-islands.jpg`,
+  snowyFortress: `${SCENERIES_URL}/snowy-fortress.jpg`,
+  treeCity: `${SCENERIES_URL}/tree-city.jpg`,
+  treehouseVillage: `${SCENERIES_URL}/treehouse-village.jpg`,
+};
+
+const ICONS_URL = "assets/images/icons";
+const ICONS = {
+  xpBadge: `${ICONS_URL}/xp-badge.png`,
+  bow: `${ICONS_URL}/wooden-bow.png`,
+  wood: `${ICONS_URL}/wood-logs.png`,
+  wingedStar: `${ICONS_URL}/winged-star.png`,
+  mana: `${ICONS_URL}/water-drop.png`,
+  trophy: `${ICONS_URL}/trophy.png`,
+  treasureMap: `${ICONS_URL}/treasure-map.png`,
+  treasureChest: `${ICONS_URL}/treasure-chest.png`,
+  stones: `${ICONS_URL}/stones.png`,
+  spellBook: `${ICONS_URL}/spell-book.png`,
+  speedBoots: `${ICONS_URL}/speed-boots.png`,
+  curse: `${ICONS_URL}/skull-curse.png`,
+  silver: `${ICONS_URL}/silver-ingots.png`,
+  shield: `${ICONS_URL}/lion-shield.png`,
+  shieldBuff: `${ICONS_URL}/shield-buff.png`,
+  gear: `${ICONS_URL}/settings-gear.png`,
+  scroll: `${ICONS_URL}/scroll.png`,
+  sandGlass: `${ICONS_URL}/sand-glass.png`,
+  heart: `${ICONS_URL}/red-heart.png`,
+  redSwords: `${ICONS_URL}/red-crossed-swords.png`,
+  crystal: `${ICONS_URL}/purple-crystal.png`,
+  poisonSkull: `${ICONS_URL}/poison-skull.png`,
+  healthPotion: `${ICONS_URL}/health-potion.png`,
+  manaPotion: `${ICONS_URL}/mana-potion.png`,
+  poisonPotion: `${ICONS_URL}/poison-potion.png`,
+  paperScroll: `${ICONS_URL}/paper-scroll.png`,
+  goldPouch: `${ICONS_URL}/gold-pouch.png`,
+  magicStaff: `${ICONS_URL}/magic-staff.png`,
+  magic: `${ICONS_URL}/magic-portal.png`,
+  lightning: `${ICONS_URL}/lightning-spell.png`,
+  levelUp: `${ICONS_URL}/level-up.png`,
+  backpack: `${ICONS_URL}/leather-backpack.png`,
+  helmet: `${ICONS_URL}/knight-helmet.png`,
+  sword: `${ICONS_URL}/iron-sword.png`,
+  ice: `${ICONS_URL}/ice-element.png`,
+  cloak: `${ICONS_URL}/hooded-cloak.png`,
+  healSpell: `${ICONS_URL}/heal-spell.png`,
+  heal: `${ICONS_URL}/heal-cross.png`,
+  star: `${ICONS_URL}/gold-star.png`,
+  gold: `${ICONS_URL}/gold-ingots.png`,
+  key: `${ICONS_URL}/golden-key.png`,
+  gem: `${ICONS_URL}/gem.png`,
+  redGem: `${ICONS_URL}/red-gem.png`,
+  greenGem: `${ICONS_URL}/green-gem.png`,
+  blueGem: `${ICONS_URL}/blue-gem.png`,
+  flame: `${ICONS_URL}/flame-burst.png`,
+  expBoost: `${ICONS_URL}/exp-boost.png`,
+  diamond: `${ICONS_URL}/diamond.png`,
+  pendant: `${ICONS_URL}/crystal-pendant.png`,
+  swords: `${ICONS_URL}/crossed-swords.png`,
+  coin: `${ICONS_URL}/crown-coin.png`,
+  coins: `${ICONS_URL}/coin-stack.png`,
+  armor: `${ICONS_URL}/chest-armor.png`,
+  axes: `${ICONS_URL}/battle-axes.png`,
+  target: `${ICONS_URL}/archery-target.png`,
+  amulet: `${ICONS_URL}/amulet-necklace.png`,
+};
+
+const ARTWORKS_URL = "assets/images/artworks";
+const ARTWORKS = {
+  archangelWarrior: `${ARTWORKS_URL}/archangel-warrior.jpg`,
+  elvenScout: `${ARTWORKS_URL}/archer.jpg`,
+  dungeonPaladin: `${ARTWORKS_URL}/armored-knight.jpg`,
+  gnomeTinkerer: `${ARTWORKS_URL}/artificer.jpg`,
+  werewolfBerserker: `${ARTWORKS_URL}/beastfolk.jpg`,
+  orcWarlord: `${ARTWORKS_URL}/berserker.jpg`,
+  highElvenMaiden: `${ARTWORKS_URL}/blonde-elf-princess.jpg`,
+  frostDragon: `${ARTWORKS_URL}/blue-ice-dragon.jpg`,
+  highPriestessAngel: `${ARTWORKS_URL}/cleric.jpg`,
+  dreadDeathKnight: `${ARTWORKS_URL}/dark-armored-knight.jpg`,
+};
+
+const CARD_LIBRARY = [
   {
     name: "Archangel Warrior",
-    artwork: `${ARTWORKS_URL}/archangel-warrior.jpg`,
-    cost: 7,
-    type: "Creature",
-    rarity: "Epic"
+    artwork: ARTWORKS.archangelWarrior,
+    atk: 18,
+    hp: 55,
+    rarity: "epic",
+    ability: "Shield",
+    desc: "A celestial champion who descends upon the battlefield with burning blade and grand golden wings.",
   },
   {
-    name: "Elven Archer",
-    artwork: `${ARTWORKS_URL}/archer.jpg`,
-    cost: 2,
-    type: "Creature",
-    rarity: "Common"
+    name: "Elven Scout",
+    artwork: ARTWORKS.elvenScout,
+    atk: 12,
+    hp: 35,
+    rarity: "common",
+    ability: "Quick Strike",
+    desc: "A swift ranger adept at tracking prey and striking silently from long distances.",
   },
   {
-    name: "Armored Knight",
-    artwork: `${ARTWORKS_URL}/armored-knight.jpg`,
-    cost: 4,
-    type: "Creature",
-    rarity: "Uncommon"
+    name: "Dungeon Paladin",
+    artwork: ARTWORKS.dungeonPaladin,
+    atk: 15,
+    hp: 60,
+    rarity: "rare",
+    ability: "Shield",
+    desc: "Encased in heavy plate armor, this stalwart knight protects allies with impenetrable defense.",
   },
   {
-    name: "Elven Princess",
-    artwork: `${ARTWORKS_URL}/blonde-elf-princess.jpg`,
-    cost: 3,
-    type: "Creature",
-    rarity: "Rare"
+    name: "Gnome Tinkerer",
+    artwork: ARTWORKS.gnomeTinkerer,
+    atk: 10,
+    hp: 30,
+    rarity: "common",
+    ability: "Double Strike",
+    desc: "An inventive spellsmith who uses mysterious gadgets and charged focus stones in battle.",
+  },
+  {
+    name: "Werewolf Berserker",
+    artwork: ARTWORKS.werewolfBerserker,
+    atk: 16,
+    hp: 42,
+    rarity: "rare",
+    ability: "Thorns",
+    desc: "A savage lycanthrope wielding axes, growing more dangerous as the fight continues.",
+  },
+  {
+    name: "Orc Warlord",
+    artwork: ARTWORKS.orcWarlord,
+    atk: 20,
+    hp: 50,
+    rarity: "rare",
+    ability: "Heavy Hit",
+    desc: "A ruthless warrior whose raw strength and heavy weapon overpower enemy defenses.",
+  },
+  {
+    name: "High Elven Maiden",
+    artwork: ARTWORKS.highElvenMaiden,
+    atk: 11,
+    hp: 28,
+    rarity: "rare",
+    ability: "Venom",
+    desc: "A noble seer versed in ancient magic, capable of turning the tide with mystic enchantments.",
   },
   {
     name: "Frost Dragon",
-    artwork: `${ARTWORKS_URL}/blue-ice-dragon.jpg`,
-    cost: 8,
-    type: "Dragon",
-    rarity: "Legendary"
+    artwork: ARTWORKS.frostDragon,
+    atk: 25,
+    hp: 80,
+    rarity: "legendary",
+    ability: "Heavy Hit",
+    desc: "An ancient terror of the icy caverns that freezes all foes caught in its path.",
   },
   {
-    name: "High Cleric",
-    artwork: `${ARTWORKS_URL}/cleric.jpg`,
-    cost: 5,
-    type: "Creature",
-    rarity: "Rare"
+    name: "High Priestess Angel",
+    artwork: ARTWORKS.highPriestessAngel,
+    atk: 13,
+    hp: 48,
+    rarity: "epic",
+    ability: "Life Steal",
+    desc: "Channels sacred energy through her staff to heal allies and purify corrupted lands.",
   },
   {
-    name: "Dread Knight",
-    artwork: `${ARTWORKS_URL}/dark-armored-knight.jpg`,
-    cost: 6,
-    type: "Creature",
-    rarity: "Epic"
+    name: "Dread Death Knight",
+    artwork: ARTWORKS.dreadDeathKnight,
+    atk: 22,
+    hp: 70,
+    rarity: "legendary",
+    ability: "Life Steal",
+    desc: "A dark warlord infused with necrotic frost, commanding the power of ice and undeath.",
   },
-  {
-    name: "Empress of Shadows",
-    artwork: `${ARTWORKS_URL}/dark-empress.jpg`,
-    cost: 8,
-    type: "Creature",
-    rarity: "Legendary"
-  },
-  {
-    name: "Dark Lord",
-    artwork: `${ARTWORKS_URL}/dark-lord.jpg`,
-    cost: 9,
-    type: "Creature",
-    rarity: "Legendary"
-  },
-  {
-    name: "Shadow Sorceress",
-    artwork: `${ARTWORKS_URL}/dark-sorceress.jpg`,
-    cost: 5,
-    type: "Spellcaster",
-    rarity: "Epic"
-  }
 ];
+
+const ABILITIES = [
+  { name: "Shield", description: "Reduces damage received by 5", icon: ICONS.shield },
+  { name: "Double Strike", description: "25% chance to hit twice", icon: ICONS.magic },
+  { name: "Heavy Hit", description: "Has high critical impact", icon: ICONS.axes },
+  { name: "Quick Strike", description: "Attacks early in initiative", icon: ICONS.bow },
+  { name: "Thorns", description: "Reflects 4 damage back on hit", icon: ICONS.redSwords },
+  { name: "Life Steal", description: "Heals 35% of damage dealt", icon: ICONS.healSpell },
+  { name: "Venom", description: "Deals bonus damage on criticals", icon: ICONS.curse },
+];
+
+const AVATARS_URL = "assets/images/avatars";
+const CARD_BACK_URL = "assets/images/card-backs";
+
+const OPPONENTS = [{ name: "CyberViper" }, { name: "DoomSlayer" }, { name: "Valkyrie" }, { name: "GhostRider" }, { name: "ApexPredator" }];
